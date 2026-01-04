@@ -1,5 +1,6 @@
 {
   "name": "shoppingcart",
+  "homepage": "https://sahilgulunjkar.github.io/e-plantShopping/", 
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -32,12 +33,11 @@
   "main": "vite.config.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Sahil4757/e-plantShopping.git"
+    "url": "git+https://github.com/sahilgulunjkar/e-plantShopping.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Sahil4757/e-plantShopping/issues"
-  },
-  "homepage": "https://github.com/Sahil4757/e-plantShopping#readme"
+    "url": "https://github.com/sahilgulunjkar/e-plantShopping/issues"
+  }
 }
