@@ -1,5 +1,7 @@
 /* Reset some default styles */
-body, h1, ul {
+body,
+h1,
+ul {
     margin: 0;
     padding: 0;
 }
@@ -13,30 +15,41 @@ body {
 /* Navbar */
 .navbar {
     background-color: #4CAF50;
-    color: #fff!important;
-    padding: 15px;
+    color: #fff !important;
+    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 20px;
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
 }
 
-.navbar .ul {
+.navbar-links {
     display: flex;
-    justify-content: space-between;
+    gap: 30px;
     align-items: center;
-    width: 1100px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
-.navbar li {
-    margin-right: 30px;
-}
-
-.navbar .ul div a {
+.nav-link {
     color: white;
-    font-size: 30px;
+    font-size: 1.2rem;
     text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
 }
+
+.nav-link:hover {
+    color: #e8f5e9;
+    transform: scale(1.05);
+    /* Subtle zoom on hover */
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+}
+
 
 .cart-icon-container {
     position: relative;
@@ -61,74 +74,105 @@ body {
 
 /* Product Grid */
 .product-grid {
-    display:flex;
+    display: flex;
     flex-direction: column;
     width: 100vw;
     align-items: center;
     justify-content: center;
+    padding-bottom: 50px;
 }
+
+.product-grid h1 {
+    text-align: center;
+    margin: 30px 0 20px 0;
+    width: 100%;
+}
+
 .product-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;
-    /* background-color: pink; */
-    /* justify-content: space-between; */
+    gap: 30px;
     padding: 20px;
     width: 100%;
-    align-items: center;
+    max-width: 1200px;
+    /* Limit width on large screens */
+    align-items: stretch;
+    /* Ensure cards stretch to same height */
     justify-content: center;
 }
 
 /* Product Card */
 .product-card {
-    flex: 0 0 calc(33.33% - 20px); /* Adjust width for 3 cards per row with 20px gap */
-    max-width: calc(26.33% - 20px); /* Adjust max-width for 3 cards per row with 20px gap */
-    margin-bottom: 20px;
-    padding: 20px;
+    flex: 0 1 300px;
     background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    /* Slight round shape */
     text-align: center;
     position: relative;
-    
-    gap: 20px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Pseudo-classes - Hover effect on product button */
 .product-card:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
     z-index: 1;
 }
 
 .product-title {
     font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 1.1rem;
+    margin: 10px 0;
+    color: #333;
 }
 
-.product-price {
-    color: #e74c3c;
-    font-size: 1.2rem;
+.product-description {
+    color: #666;
+    font-size: 0.9rem;
     margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.product-cost {
+    color: #2e7d32;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
 }
 
 .product-image {
-    max-width: 100%;
-    height: 200px; /* Adjust height for better consistency */
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    /* Round image corners */
+    margin-bottom: 10px;
 }
 
 .product-button {
-    background-color: #e74c3c;
+    background-color: #4CAF50;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
+    border-radius: 25px;
+    /* Round button */
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
-    margin-top: 10px;
+    margin-top: auto;
+    /* Push to bottom */
+    width: 100%;
 }
 
 .product-button:hover {
-    background-color: #c0392b;
+    background-color: #45a049;
 }
 
 /* Pseudo-elements - Sale badge */
@@ -137,54 +181,67 @@ body {
     background-color: #e74c3c;
     color: #fff;
     position: absolute;
-    top: 0;
-    right: 0;
-    padding: 5px 10px;
-    border-radius: 0 0 0 5px;
-}
-.tag_home_link{
-    display: flex;
-    /* background-color: red; */
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-left: 50px;
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-}
-.tag_home_link h3{
-    font-size: 30px;
-}
-.tag a{
-    text-decoration: none;
-}
-.tag {
-    width: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    top: 15px;
+    right: 15px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 2;
 }
 
-.tag img {
-    height: 70px;
-    width: 70px;
-    border-radius: 70%;
-    
+/* Navbar Logo Section */
+.tag {
+    display: flex;
+    align-items: center;
 }
 
 .luxury {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 650px;
-    font-size: 19px;
+    gap: 15px;
+    /* Space between logo and text */
+    text-decoration: none;
+    cursor: pointer;
 }
-.cart{
+
+.luxury img {
+    height: 60px;
+    width: 60px;
+    object-fit: contain;
+    /* Optional: subtle shadow or border */
+}
+
+.luxury-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.luxury h3 {
+    color: white;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+}
+
+.luxury i {
+    color: #e0f2f1;
+    /* Softer white for subtitle */
+    font-size: 0.9rem;
+    font-style: italic;
+    font-weight: 300;
+    margin: 0;
+}
+
+.cart {
     color: white;
     display: flex;
 }
-.cart_quantity_count{
+
+.cart_quantity_count {
     margin-top: 16px;
     /* background-color: red; */
     margin-left: 27px;
@@ -192,13 +249,15 @@ body {
     font-size: 29px;
 
 }
-.plantname_heading{
-   display: flex;
-   align-items: center;
-   justify-content: center;
+
+.plantname_heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /* background-color: yellow; */
 }
-.plant_heading{
+
+.plant_heading {
     width: 400px;
     text-align: center;
     margin: 20px;
@@ -206,19 +265,24 @@ body {
     border-left: none;
     border-right: none;
 
-    
+
 }
+
 /* Add Media Query for responsiveness */
 @media (max-width: 768px) {
     .product-card {
-        flex: 1 1 calc(50% - 20px); /* Adjust width for 2 cards per row with 20px gap on smaller screens */
-        max-width: calc(50% - 20px); /* Adjust max-width for 2 cards per row with 20px gap on smaller screens */
+        flex: 1 1 calc(50% - 20px);
+        /* Adjust width for 2 cards per row with 20px gap on smaller screens */
+        max-width: calc(50% - 20px);
+        /* Adjust max-width for 2 cards per row with 20px gap on smaller screens */
     }
 }
+
 /* ProductList.css */
 
 .product-button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
+    /* Green */
     border: none;
     color: white;
     padding: 10px 20px;
@@ -229,44 +293,59 @@ body {
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
-  }
-  
-  .product-button:hover {
+}
+
+.product-button:hover {
     background-color: #45a049;
-  }
-  
-  .product-button.added-to-cart {
-    background-color: grey; /* Grey when product is added */
-  }
-  @media (max-width: 1200px) {
+}
+
+.product-button.added-to-cart {
+    background-color: grey;
+    /* Grey when product is added */
+}
+
+@media (max-width: 1200px) {
     .product-card {
-      flex: 1 1 calc(33.33% - 20px); /* Adjust width for 3 cards per row with 20px gap on medium screens */
-      max-width: calc(33.33% - 20px); /* Adjust max-width for 3 cards per row with 20px gap on medium screens */
+        flex: 1 1 calc(33.33% - 20px);
+        /* Adjust width for 3 cards per row with 20px gap on medium screens */
+        max-width: calc(33.33% - 20px);
+        /* Adjust max-width for 3 cards per row with 20px gap on medium screens */
     }
-  }
-  
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .product-card {
-      flex: 1 1 calc(50% - 20px); /* Adjust width for 2 cards per row with 20px gap on small screens */
-      max-width: calc(50% - 20px); /* Adjust max-width for 2 cards per row with 20px gap on small screens */
+        flex: 1 1 calc(50% - 20px);
+        /* Adjust width for 2 cards per row with 20px gap on small screens */
+        max-width: calc(50% - 20px);
+        /* Adjust max-width for 2 cards per row with 20px gap on small screens */
     }
+
     .navbar {
-        flex-direction: column; /* Change flex direction to stack items vertically */
-        align-items: center; /* Align items to the center of the container */
-      }
-    
-      .tag {
-        margin-bottom: 20px; /* Add margin bottom for spacing */
-        text-align: center; /* Align text to the center */
-      }
-    
-      .ul {
-        display: flex; /* Set display to flex */
-        flex-direction: column; /* Change flex direction to stack items vertically */
-        gap: 10px; /* Add gap between items */
-      }
-    
-      .ul div {
-        text-align: center; /* Align text to the center */
-      }
-  }
+        flex-direction: column;
+        /* Change flex direction to stack items vertically */
+        align-items: center;
+        /* Align items to the center of the container */
+    }
+
+    .tag {
+        margin-bottom: 20px;
+        /* Add margin bottom for spacing */
+        text-align: center;
+        /* Align text to the center */
+    }
+
+    .ul {
+        display: flex;
+        /* Set display to flex */
+        flex-direction: column;
+        /* Change flex direction to stack items vertically */
+        gap: 10px;
+        /* Add gap between items */
+    }
+
+    .ul div {
+        text-align: center;
+        /* Align text to the center */
+    }
+}
